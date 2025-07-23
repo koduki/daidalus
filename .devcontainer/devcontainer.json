@@ -1,0 +1,23 @@
+{
+  "name": "dAIdalus Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.2-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/google-cloud-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "ms-vscode.vscode-json",
+        "googlecloudtools.cloudcode"
+      ]
+    }
+  },
+  "postCreateCommand": "gem install bundler && gem install sinatra && gem install google-cloud-firestore && gem install octokit && gem install line-bot-api",
+  "forwardPorts": [4567, 8080],
+  "remoteUser": "vscode"
+}

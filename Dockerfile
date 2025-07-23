@@ -13,9 +13,10 @@ RUN apt-get update && apt-get install -y \
 RUN curl https://sdk.cloud.google.com | bash
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 
-# Install gemini-cli (assuming it will be available via npm or similar)
+# Install Node.js and gemini-cli
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    && npm install -g @google/gemini-cli
 
 # Copy Gemfile and install Ruby dependencies
 COPY Gemfile* ./

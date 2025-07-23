@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Mock gemini-cli for testing the web interface
+# This simulates the behavior of gemini-cli with standard input/output
+
+echo "Mock Gemini CLI started. Type 'exit' to quit."
+
+while IFS= read -r line; do
+    if [[ "$line" == "exit" ]]; then
+        echo "Goodbye!"
+        break
+    elif [[ "$line" == *"help"* ]]; then
+        echo "Mock Gemini CLI - Available commands: help, exit, or any question"
+    elif [[ "$line" == *"capital of Japan"* ]]; then
+        echo "The capital of Japan is Tokyo."
+    elif [[ "$line" == *"GitHub issue"* ]]; then
+        echo "I can help you with GitHub issues. Please provide more details about the specific issue you'd like me to address."
+    else
+        echo "Mock response to: $line"
+        echo "This is a simulated response from gemini-cli. In a real implementation, this would be processed by the actual Gemini AI model."
+    fi
+done

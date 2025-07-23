@@ -21,20 +21,55 @@ dAIdalus（ダイダロス）は、開発者の隣で作業する思考の見え
 
 ## 🚀 クイックスタート
 
-### 前提条件
+### 環境構築の方針
 
-- Ruby 3.2以上
-- Node.js 18以上
-- Docker（デプロイ用）
-- Google Cloud SDK（本番環境用）
+- **🔧 開発環境**: DevContainer を使用（推奨）
+- **🚀 本番実行**: Dockerfile を使用
 
-### ローカル開発環境のセットアップ
+### 開発環境のセットアップ（DevContainer）
 
-1. **リポジトリのクローン**
+**推奨方法**: VS Code + DevContainer を使用した開発環境
+
+1. **前提条件**
+   - Docker Desktop
+   - VS Code
+   - Dev Containers 拡張機能
+
+2. **セットアップ手順**
 ```bash
+# リポジトリのクローン
 git clone https://github.com/koduki/daidalus.git
 cd daidalus
 ```
+
+3. **VS Code で開発環境を起動**
+   - VS Code でプロジェクトフォルダーを開く
+   - 「Reopen in Container」を選択
+   - 自動的に開発環境がセットアップされます
+   - Ruby 3.2、Node.js 18、gemini-cli が自動インストールされます
+
+4. **環境変数の設定**
+```bash
+cp .env.example .env
+# .envファイルを編集して必要な環境変数を設定
+```
+
+5. **サーバーの起動**
+```bash
+# DevContainer内で実行
+bundle exec ruby app.rb
+```
+
+サーバーは `http://localhost:4567` で起動します。
+
+### 手動セットアップ（DevContainer未使用の場合）
+
+DevContainerを使用しない場合の手動セットアップ：
+
+1. **前提条件**
+   - Ruby 3.2以上
+   - Node.js 18以上
+   - Google Cloud SDK
 
 2. **依存関係のインストール**
 ```bash
@@ -44,31 +79,6 @@ bundle install
 # gemini-cliのインストール
 npm install -g @google/gemini-cli
 ```
-
-3. **環境変数の設定**
-```bash
-cp .env.example .env
-# .envファイルを編集して必要な環境変数を設定
-```
-
-4. **サーバーの起動**
-```bash
-# 開発モード
-bundle exec ruby app.rb
-
-# または
-bundle exec rackup config.ru
-```
-
-サーバーは `http://localhost:4567` で起動します。
-
-### DevContainer を使用した開発
-
-VS Codeを使用している場合、DevContainerを利用できます：
-
-1. VS Codeでプロジェクトフォルダーを開く
-2. 「Reopen in Container」を選択
-3. 自動的に開発環境がセットアップされます
 
 ## 📡 API リファレンス
 
